@@ -266,9 +266,7 @@ def archive_bytes(archive, name, data):
     archive.writestr(info, data)
 
 
-def build(root, spec, lock, output):
-    validate_lock(root, spec, lock)
-    output.mkdir(parents=True, exist_ok=True)
+def pack_overrides(root):
     overrides = list(override_files(root))
     for source, target in (
         ("README.md", "README-TELLUS.md"),
@@ -278,32 +276,75 @@ def build(root, spec, lock, output):
         document = root / source
         if document.exists():
             overrides.append((f"overrides/{target}", document.read_bytes()))
-    built = []
-    for loader, dependency in spec["loaders"].items():
-        files = [
+    return overrides
+
+
+def pack_filename(spec, loader):
+    return f"Tellus-Explorer-{loader}-{spec['minecraft']}-{spec['version']}.mrpack"
+
+
+def pack_index(spec, lock, loader):
+    dependency = spec["loaders"][loader]
+    return {
+        "formatVersion": 1,
+        "game": "minecraft",
+        "versionId": f"{spec['version']}-{loader}",
+        "name": f"{spec['name']} ({loader.capitalize() if loader == 'fabric' else 'NeoForge'})",
+        "summary": spec["summary"],
+        "files": [
             {key: entry[key] for key in ("path", "hashes", "env", "downloads", "fileSize")}
             for entry in lock["files"] if loader in entry["loaders"]
-        ]
-        index = {
-            "formatVersion": 1,
-            "game": "minecraft",
-            "versionId": f"{spec['version']}-{loader}",
-            "name": f"{spec['name']} ({loader.capitalize() if loader == 'fabric' else 'NeoForge'})",
-            "summary": spec["summary"],
-            "files": files,
-            "dependencies": {"minecraft": spec["minecraft"], dependency["id"]: dependency["version"]},
-        }
-        filename = f"Tellus-Explorer-{loader}-{spec['minecraft']}-{spec['version']}.mrpack"
-        path = output / filename
+        ],
+        "dependencies": {"minecraft": spec["minecraft"], dependency["id"]: dependency["version"]},
+    }
+
+
+def build(root, spec, lock, output):
+    validate_lock(root, spec, lock)
+    output.mkdir(parents=True, exist_ok=True)
+    overrides = pack_overrides(root)
+    built = []
+    for loader in spec["loaders"]:
+        index = pack_index(spec, lock, loader)
+        path = output / pack_filename(spec, loader)
         with zipfile.ZipFile(path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as archive:
             archive_bytes(archive, "modrinth.index.json", json_bytes(index))
             for name, data in overrides:
                 archive_bytes(archive, name, data)
         built.append(path)
-        print(f"Built {path.name}: {len(files)} pinned downloads")
+        print(f"Built {path.name}: {len(index['files'])} pinned downloads")
     checksums = "".join(f"{file_hashes(path)['sha256']}  {path.name}\n" for path in built)
     (output / "SHA256SUMS.txt").write_text(checksums, encoding="ascii", newline="\n")
     return built
+
+
+def audit(root, spec, lock, output):
+    validate_lock(root, spec, lock)
+    overrides = dict(pack_overrides(root))
+    checksums = []
+    for loader in spec["loaders"]:
+        path = output / pack_filename(spec, loader)
+        with zipfile.ZipFile(path) as archive:
+            names = archive.namelist()
+            expected = {"modrinth.index.json", *overrides}
+            if len(names) != len(set(names)) or set(names) != expected:
+                raise ValueError(f"Unexpected archive contents: {path.name}")
+            if archive.testzip() is not None:
+                raise ValueError(f"Corrupt archive: {path.name}")
+            if json.loads(archive.read("modrinth.index.json")) != pack_index(spec, lock, loader):
+                raise ValueError(f"Manifest differs from the lock: {path.name}")
+            for name, content in overrides.items():
+                if archive.read(name) != content:
+                    raise ValueError(f"Override differs from source: {path.name} {name}")
+        checksums.append(f"{file_hashes(path)['sha256']}  {path.name}\n")
+        print(f"Audited {path.name}", flush=True)
+    if (output / "SHA256SUMS.txt").read_text(encoding="ascii") != "".join(checksums):
+        raise ValueError("SHA256SUMS.txt differs from the generated archives")
+
+
+def check_tag(spec, tag):
+    if tag != f"v{spec['version']}":
+        raise ValueError(f"Release tag must be v{spec['version']}, not {tag!r}")
 
 
 def verify(root, spec, lock):
@@ -319,15 +360,21 @@ def verify(root, spec, lock):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=("resolve", "build", "verify"))
+    parser.add_argument("command", choices=("resolve", "build", "verify", "audit", "check-tag"))
+    parser.add_argument("tag", nargs="?")
     args = parser.parse_args()
     spec = read_json(ROOT / "pack.json")
-    if args.command == "resolve":
+    if args.command == "check-tag":
+        check_tag(spec, args.tag)
+        print(f"Release tag matches {spec['version']}")
+    elif args.command == "resolve":
         resolve(ROOT, spec)
     else:
         lock = read_json(ROOT / "pack.lock.json")
         if args.command == "build":
             build(ROOT, spec, lock, ROOT / "dist")
+        elif args.command == "audit":
+            audit(ROOT, spec, lock, ROOT / "dist")
         else:
             verify(ROOT, spec, lock)
 

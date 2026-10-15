@@ -189,6 +189,42 @@ class PackTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "Wrong loader"):
                 pack.resolve_entry(self.spec, self.spec["files"][0])
 
+    def test_audit_accepts_exact_build(self):
+        output = self.root / "dist"
+        pack.build(self.root, self.spec, self.lock, output)
+        pack.audit(self.root, self.spec, self.lock, output)
+
+    def test_audit_rejects_extra_bundled_file(self):
+        output = self.root / "dist"
+        paths = pack.build(self.root, self.spec, self.lock, output)
+        with zipfile.ZipFile(paths[0], "a") as archive:
+            archive.writestr("overrides/unrequested.txt", "not part of the pack")
+        with self.assertRaisesRegex(ValueError, "Unexpected archive contents"):
+            pack.audit(self.root, self.spec, self.lock, output)
+
+    def test_audit_rejects_changed_override(self):
+        shared = self.root / "overrides"
+        shared.mkdir()
+        (shared / "fixture.txt").write_text("before", encoding="ascii")
+        output = self.root / "dist"
+        pack.build(self.root, self.spec, self.lock, output)
+        (shared / "fixture.txt").write_text("after", encoding="ascii")
+        with self.assertRaisesRegex(ValueError, "Override differs from source"):
+            pack.audit(self.root, self.spec, self.lock, output)
+
+    def test_audit_rejects_wrong_checksums(self):
+        output = self.root / "dist"
+        pack.build(self.root, self.spec, self.lock, output)
+        (output / "SHA256SUMS.txt").write_text("wrong\n", encoding="ascii")
+        with self.assertRaisesRegex(ValueError, "SHA256SUMS.txt differs"):
+            pack.audit(self.root, self.spec, self.lock, output)
+
+    def test_release_tag_must_match_pack_version(self):
+        pack.check_tag(self.spec, "v0.1.0-alpha.1")
+        for tag in (None, "v0.1.0", "latest", "v0.1.0-alpha.2"):
+            with self.subTest(tag=tag), self.assertRaisesRegex(ValueError, "Release tag must be"):
+                pack.check_tag(self.spec, tag)
+
 
 class RealPackDefaultsTests(unittest.TestCase):
     def test_requested_scope_is_present_without_expeditions(self):

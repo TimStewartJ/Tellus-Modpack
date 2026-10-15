@@ -1,4 +1,4 @@
-TELLUS EXPLORER 0.1.0-alpha.1
+TELLUS EXPLORER 0.1.0-alpha.2
 Minecraft 26.3 | Java 25 | Fresh test worlds only
 
 This is a Tellus exploration and creative-building pack, not Tellus Expeditions.
@@ -33,7 +33,7 @@ on a machine with enough free RAM; do not allocate all your physical memory.
 ALPHA LIMITS
 Downloads and package contents are checked; this assembled pack still needs a
 fresh-world game test on each loader. Shader/DH/building interactions are not
-claimed validated. Public publishing is on hold.
+claimed validated. GitHub prereleases are published only from version tags.
 Do not update the Tellus/DH forks independently through a launcher's update-all
 button. Use a newly tested pack version instead.
 

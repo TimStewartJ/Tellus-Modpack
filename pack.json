@@ -1,6 +1,6 @@
 {
   "name": "Tellus Explorer",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "summary": "Earth terrain, distant views, creative building and optional shaders. No Tellus Expeditions.",
   "minecraft": "26.3",
   "loaders": {

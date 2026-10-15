@@ -1,15 +1,16 @@
 # Tellus Explorer
 
 A small Minecraft 26.3 exploration and creative-building modpack, assembled from
-exact published files. Version **0.1.0-alpha.1**.
+exact published files. Version **0.1.0-alpha.2**.
 
 **Tellus Expeditions is deliberately excluded.** Its source repository remains
 private. This pack contains none of its binaries, source, gameplay changes,
 world presets or prototypes.
 
-The pack is local-only for now: no public repository or release has been
-published. Package integrity is not a claim that the combined game stack has
-passed a fresh-world play test.
+Source repository: [TimStewartJ/Tellus-Modpack](https://github.com/TimStewartJ/Tellus-Modpack).
+GitHub Actions validates changes and publishes prereleases only from matching
+version tags. No Modrinth listing is configured. Package integrity is not a
+claim that the combined game stack has passed a fresh-world play test.
 
 ## Contents
 
@@ -89,6 +90,7 @@ client-overrides\         Small client configuration layer
 overrides\                Shared getting-started text
 tools\pack.py             Standard-library resolver, verifier and pack builder
 tests\test_pack.py        Offline regression tests
+.github\workflows\pack.yml   Validation and tag-triggered GitHub prereleases
 dist\                     Generated .mrpack files and SHA256SUMS.txt (ignored)
 .cache\                   Downloaded verification inputs (ignored)
 ```
@@ -112,12 +114,15 @@ Set-Location -LiteralPath 'E:\Tellus-Modpack'
 python -m unittest discover -s tests -v
 python tools\pack.py verify
 python tools\pack.py build
+python tools\pack.py audit
 ```
 
 `verify` downloads missing cached inputs if needed, checks SHA-1, SHA-256 and
 SHA-512 against the lock, and checks each ZIP/JAR for CRC errors. It does not
 install or execute downloaded code. `build` is offline: it uses the checked-in
 lock, never "latest", and produces deterministic archives and SHA-256 sums.
+`audit` checks the generated manifests, override bytes and checksums against
+the source and lock.
 
 To intentionally update a component, edit its exact source selection in
 `pack.json`, increment the pack version, then:
@@ -127,6 +132,7 @@ python tools\pack.py resolve
 python -m unittest discover -s tests -v
 python tools\pack.py verify
 python tools\pack.py build
+python tools\pack.py audit
 ```
 
 `resolve` uses public APIs without credentials. It verifies GitHub release
@@ -138,6 +144,30 @@ diff and obtain permission before running game tests or publishing.
 Do not use a launcher's update-all function to replace individual forks.
 Pre-alpha supports only fresh ephemeral worlds and the current selected stack;
 no save migration or old-protocol compatibility is provided.
+
+## Automated releases
+
+Pushes to `main`, pull requests and manual workflow runs execute the offline
+tests, verify every locked upstream download, build both packs, audit the
+archives and retain the exports as GitHub Actions artifacts. They do not
+publish a release or run Minecraft.
+
+After the intended version and lock are committed and publication is approved:
+
+```powershell
+git tag v0.1.0-alpha.2
+git push origin v0.1.0-alpha.2
+```
+
+That tag must exactly match `pack.json`. The same workflow then publishes the
+already-verified `.mrpack` files and `SHA256SUMS.txt` as a GitHub **prerelease**.
+Publishing uses GitHub's short-lived workflow token, with write permission only
+on the publishing job; no personal token is stored in the repository. The
+workflow does not resolve newer dependency versions or create tags for you.
+
+Modrinth publishing is not configured. It can be added after creating the pack
+project and storing an appropriately scoped token as a GitHub Actions secret.
+Neither publishing route automatically replaces an existing Prism instance.
 
 ## Credits and license
 

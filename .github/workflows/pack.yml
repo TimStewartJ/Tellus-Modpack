@@ -1,0 +1,78 @@
+name: Pack checks and releases
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref_type != 'tag' }}
+
+jobs:
+  check:
+    name: Verify and build both packs
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.12"
+      - name: Reject tags that do not match the pack version
+        if: github.ref_type == 'tag'
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: python -m tools.pack check-tag "$RELEASE_TAG"
+      - name: Offline regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Download and verify the exact locked inputs
+        run: python -m tools.pack verify
+      - name: Build Fabric and NeoForge exports
+        run: python -m tools.pack build
+      - name: Audit exported manifests, overrides and checksums
+        run: python -m tools.pack audit
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: tellus-explorer-packs
+          path: |
+            dist/*.mrpack
+            dist/SHA256SUMS.txt
+          if-no-files-found: error
+
+  publish:
+    name: Publish GitHub prerelease
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: tellus-explorer-packs
+          path: dist
+      - name: Publish only the already-verified artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: >-
+          gh release create "$RELEASE_TAG"
+          dist/*.mrpack dist/SHA256SUMS.txt
+          --verify-tag
+          --title "Tellus Explorer $RELEASE_TAG"
+          --notes-file .github/RELEASE-NOTES.md
+          --prerelease
+          --latest=false
