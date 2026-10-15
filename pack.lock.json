@@ -1,0 +1,415 @@
+{
+  "lockVersion": 1,
+  "specSha256": "fcbdbaca781d2b9fa7c042e9da4b7685b45a1f96752c1d3f95cdebe533c243d5",
+  "files": [
+    {
+      "id": "tellus-fabric",
+      "loaders": [
+        "fabric"
+      ],
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "source": {
+        "type": "github",
+        "repository": "TimStewartJ/Tellus",
+        "tag": "v0.8.4-fork.15",
+        "asset": "Tellus-fabric-26.3-0.8.4-fork.15.jar"
+      },
+      "downloads": [
+        "https://github.com/TimStewartJ/Tellus/releases/download/v0.8.4-fork.15/Tellus-fabric-26.3-0.8.4-fork.15.jar"
+      ],
+      "fileSize": 18684672,
+      "hashes": {
+        "sha1": "ce4e8a48a28ff77d985471f73b9ace1347055170",
+        "sha256": "d0ec646013e5fc804a25be363e5f7362b7671410b8b6eac9e82bccf1d29a4d07",
+        "sha512": "fec5ac01a894afa6fb4cc39670c4b23c5d3c2eddb693dcd8ac40e97515d7ddb950e81279e210be6ede5837fc2fde0398e99768bef5ec8755129ea191b48dbbc0"
+      },
+      "metadata": {
+        "release": "https://github.com/TimStewartJ/Tellus/releases/tag/v0.8.4-fork.15"
+      },
+      "path": "mods/Tellus-fabric-26.3-0.8.4-fork.15.jar"
+    },
+    {
+      "id": "tellus-neoforge",
+      "loaders": [
+        "neoforge"
+      ],
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "source": {
+        "type": "github",
+        "repository": "TimStewartJ/Tellus",
+        "tag": "v0.8.4-fork.15",
+        "asset": "Tellus-neoforge-26.3-0.8.4-fork.15.jar"
+      },
+      "downloads": [
+        "https://github.com/TimStewartJ/Tellus/releases/download/v0.8.4-fork.15/Tellus-neoforge-26.3-0.8.4-fork.15.jar"
+      ],
+      "fileSize": 18639312,
+      "hashes": {
+        "sha1": "30d066b63ec4d90f409cb62bc1c21eb17407c2d9",
+        "sha256": "17317a0dc28139f05ab2779afc2958712baf9767adc01848da23c62ff318da39",
+        "sha512": "6e4ef265dd59720513d00b566fcd85b9f2b0ac671c62d29b0bb2a350f08b07cbed52e32a40f7f049ea7cc371695216b3b672e343960f9fda6b75954e03192261"
+      },
+      "metadata": {
+        "release": "https://github.com/TimStewartJ/Tellus/releases/tag/v0.8.4-fork.15"
+      },
+      "path": "mods/Tellus-neoforge-26.3-0.8.4-fork.15.jar"
+    },
+    {
+      "id": "distant-horizons-fabric",
+      "loaders": [
+        "fabric"
+      ],
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "source": {
+        "type": "github",
+        "repository": "TimStewartJ/distant-horizons",
+        "tag": "3.3.4-tellus-fork.7",
+        "asset": "DistantHorizons-fabric-3.3.4-tellus-fork.7-26.3.jar"
+      },
+      "downloads": [
+        "https://github.com/TimStewartJ/distant-horizons/releases/download/3.3.4-tellus-fork.7/DistantHorizons-fabric-3.3.4-tellus-fork.7-26.3.jar"
+      ],
+      "fileSize": 28441308,
+      "hashes": {
+        "sha1": "ab53a884f18ba8d76125b179e12d74275866b5c7",
+        "sha256": "ef401fd5c133d43359844487bdde6cc4e31a0aaa5be027367b998f8fa62c6cf6",
+        "sha512": "c2a96bf6b53f258fddb62950403715bb0e9b4d9b16fa9e1d4b71570c3155293d6ff3b8ba0a70c59928f4137d01cde7abc59aa32cce4e324a069bdb44d6a3e3df"
+      },
+      "metadata": {
+        "release": "https://github.com/TimStewartJ/distant-horizons/releases/tag/3.3.4-tellus-fork.7"
+      },
+      "path": "mods/DistantHorizons-fabric-3.3.4-tellus-fork.7-26.3.jar"
+    },
+    {
+      "id": "distant-horizons-neoforge",
+      "loaders": [
+        "neoforge"
+      ],
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "source": {
+        "type": "github",
+        "repository": "TimStewartJ/distant-horizons",
+        "tag": "3.3.4-tellus-fork.7",
+        "asset": "DistantHorizons-neoforge-3.3.4-tellus-fork.7-26.3.jar"
+      },
+      "downloads": [
+        "https://github.com/TimStewartJ/distant-horizons/releases/download/3.3.4-tellus-fork.7/DistantHorizons-neoforge-3.3.4-tellus-fork.7-26.3.jar"
+      ],
+      "fileSize": 23136097,
+      "hashes": {
+        "sha1": "777e61953a371bd7be1538b533999bcfe705782b",
+        "sha256": "bff1d0778c56c81166467237f80a9856e3bde24dd4b5b6a80d517a955b8de3cd",
+        "sha512": "cdeb03a693400ed1eef627a391b4013112cc6ae22129808b72603e50699d870e63382550577a68c70aed0c071e84df45e7b102e869096ebde6b1ecbee59578b9"
+      },
+      "metadata": {
+        "release": "https://github.com/TimStewartJ/distant-horizons/releases/tag/3.3.4-tellus-fork.7"
+      },
+      "path": "mods/DistantHorizons-neoforge-3.3.4-tellus-fork.7-26.3.jar"
+    },
+    {
+      "id": "fabric-api",
+      "loaders": [
+        "fabric"
+      ],
+      "env": {
+        "client": "required",
+        "server": "required"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "hHj6EvFZ"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/P7dR8mSH/versions/hHj6EvFZ/fabric-api-0.160.7%2B26.3.jar"
+      ],
+      "fileSize": 2593945,
+      "hashes": {
+        "sha1": "a2a1aaaac54a5fdba0fdb18cd4fc97e6b600a40d",
+        "sha256": "1720e31ab65c62d4de6e963606d74db4d6063bf58b065f40296cdaa68b25759d",
+        "sha512": "e80d3980c235a2245cfe61eee02d60d041245f9571117d86bd7edd6c62e158f681384a104375f588bf58966cb8c6eba79e66363afb9ecde93ea3411414276825"
+      },
+      "metadata": {
+        "projectId": "P7dR8mSH",
+        "versionId": "hHj6EvFZ",
+        "version": "0.160.7+26.3",
+        "dependencies": []
+      },
+      "path": "mods/fabric-api-0.160.7+26.3.jar"
+    },
+    {
+      "id": "sodium-fabric",
+      "loaders": [
+        "fabric"
+      ],
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "bAZQdGpg"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/AANobbMI/versions/bAZQdGpg/sodium-fabric-0.9.2%2Bmc26.3.jar"
+      ],
+      "fileSize": 1908068,
+      "hashes": {
+        "sha1": "9acfe851e36f4fb27d7c5baa224e8bd4e0334283",
+        "sha256": "87a5bb39f7e6e41106e77f122f82fc93f9d3bc0b6ebcb746b314172a446a287a",
+        "sha512": "f3f260f204b8ce5e8777c2c73f537956755ec61f3817b0b78b5e5568e8aa40f14891f146475075109747665c7c88a45ca0ca9a8df3c68d79c58ecdaa8d8c4b93"
+      },
+      "metadata": {
+        "projectId": "AANobbMI",
+        "versionId": "bAZQdGpg",
+        "version": "mc26.3-0.9.2-fabric",
+        "dependencies": []
+      },
+      "path": "mods/sodium-fabric-0.9.2+mc26.3.jar"
+    },
+    {
+      "id": "sodium-neoforge",
+      "loaders": [
+        "neoforge"
+      ],
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "VHtnT9Q4"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/AANobbMI/versions/VHtnT9Q4/sodium-neoforge-0.9.2%2Bmc26.3.jar"
+      ],
+      "fileSize": 1208169,
+      "hashes": {
+        "sha1": "9015607e5ae2c5b9692ebf05113f9caca6ec41bf",
+        "sha256": "5514d68728f7d332da26a0809acf633fd2f9bbfe956891c85d3194dcb2aaf590",
+        "sha512": "f5b62730bbee7d116a83c765b8e7cdb660da97ab7f122f180293eda3e56b5ca4d701b0bf18c36f087e9a7349f8ec113f1f8c0d462a8893c551a2f3e163bd0cb8"
+      },
+      "metadata": {
+        "projectId": "AANobbMI",
+        "versionId": "VHtnT9Q4",
+        "version": "mc26.3-0.9.2-neoforge",
+        "dependencies": []
+      },
+      "path": "mods/sodium-neoforge-0.9.2+mc26.3.jar"
+    },
+    {
+      "id": "iris-fabric",
+      "loaders": [
+        "fabric"
+      ],
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "bAdKrpw8"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/YL57xq9U/versions/bAdKrpw8/iris-fabric-1.11.6%2Bmc26.3.jar"
+      ],
+      "fileSize": 2849091,
+      "hashes": {
+        "sha1": "63493cf8c58754bf6b9db297b895aeb17393e4df",
+        "sha256": "0fcd6f8858db94ed1f28210005fcff9b9364beaa6eb2a8eccf9449a6f709f14d",
+        "sha512": "cd0fdc5a275a851b3d72e3e699c957671f293f5c87951736ad83adcdabaa58f533e9791110a227c7817b312269c32c063121b183a39d8c11a22e55d2c76cdb25"
+      },
+      "metadata": {
+        "projectId": "YL57xq9U",
+        "versionId": "bAdKrpw8",
+        "version": "1.11.6+26.3-fabric",
+        "dependencies": [
+          {
+            "version_id": "bAZQdGpg",
+            "project_id": "AANobbMI",
+            "file_name": null,
+            "dependency_type": "required"
+          }
+        ]
+      },
+      "path": "mods/iris-fabric-1.11.6+mc26.3.jar"
+    },
+    {
+      "id": "iris-neoforge",
+      "loaders": [
+        "neoforge"
+      ],
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "Ag5S66CF"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/YL57xq9U/versions/Ag5S66CF/iris-neoforge-1.11.7%2Bmc26.3.jar"
+      ],
+      "fileSize": 2804761,
+      "hashes": {
+        "sha1": "57cbbd1f58b6226c633520541c1a3ae57c019373",
+        "sha256": "2260506334a17ac566ea30169ab491201208f55c1c7212bb987bc0c7c59a8d93",
+        "sha512": "302659f09e50d02a6cd96075be93aade2a2f9d709afe21d56465228fb7d7f4717566e3702a7872479df2fff9b7a5ff5b1b6047cc95e09ee6120fad5ea5857eec"
+      },
+      "metadata": {
+        "projectId": "YL57xq9U",
+        "versionId": "Ag5S66CF",
+        "version": "1.11.7+26.3-neoforge",
+        "dependencies": [
+          {
+            "version_id": "VHtnT9Q4",
+            "project_id": "AANobbMI",
+            "file_name": null,
+            "dependency_type": "required"
+          }
+        ]
+      },
+      "path": "mods/iris-neoforge-1.11.7+mc26.3.jar"
+    },
+    {
+      "id": "mighty-architectury-fabric",
+      "loaders": [
+        "fabric"
+      ],
+      "env": {
+        "client": "required",
+        "server": "optional"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "rjEVSfVK"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/FDYDUHRw/versions/rjEVSfVK/mightyarchitect-2.1.0%2Bmc26.3-fabric.jar"
+      ],
+      "fileSize": 1001537,
+      "hashes": {
+        "sha1": "2494b6df059e75dccb1a54742ae2340e7808420d",
+        "sha256": "dd9fc3170aebf1faa90701fd6625af923cd06e6c47c2707616e456bf7c150df3",
+        "sha512": "3bb3465a27846c9d76e49ba1c5e4049c42322c0dfdbd2e83760aadbeab790beaf40556974a861b81b316bf04a5047735206a750e8218e33643db4b30adf41c7a"
+      },
+      "metadata": {
+        "projectId": "FDYDUHRw",
+        "versionId": "rjEVSfVK",
+        "version": "2.1.0+mc26.3-fabric",
+        "dependencies": [
+          {
+            "version_id": null,
+            "project_id": "P7dR8mSH",
+            "file_name": null,
+            "dependency_type": "required"
+          }
+        ]
+      },
+      "path": "mods/mightyarchitect-2.1.0+mc26.3-fabric.jar"
+    },
+    {
+      "id": "mighty-architectury-neoforge",
+      "loaders": [
+        "neoforge"
+      ],
+      "env": {
+        "client": "required",
+        "server": "optional"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "MtPYT3ho"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/FDYDUHRw/versions/MtPYT3ho/mightyarchitect-2.1.0%2Bmc26.3-neoforge.jar"
+      ],
+      "fileSize": 983085,
+      "hashes": {
+        "sha1": "68a3f851d2bc9e5cb5133ef3250d878b8ff22fe3",
+        "sha256": "d1a3f4ea1d330f633f46dd25adba796d150499df7c4dfb6acfdef30109a6dc2f",
+        "sha512": "848a6f4dacf541adbb1042ee594a84f1232f218c58af5675e7c7bbc96c1bf685a744c93ab59e0b98901f55a875ddcc6d2116fe35fb6e5e986fbef769e8368726"
+      },
+      "metadata": {
+        "projectId": "FDYDUHRw",
+        "versionId": "MtPYT3ho",
+        "version": "2.1.0+mc26.3-neoforge",
+        "dependencies": []
+      },
+      "path": "mods/mightyarchitect-2.1.0+mc26.3-neoforge.jar"
+    },
+    {
+      "id": "bliss",
+      "loaders": [
+        "fabric",
+        "neoforge"
+      ],
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "kC2Y8q1P"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/ZvMtQlho/versions/kC2Y8q1P/Bliss_v2.1.2_%28Chocapic13_Shaders_edit%29.zip"
+      ],
+      "fileSize": 1791406,
+      "hashes": {
+        "sha1": "ded6c8a98305f8aff90ef781e7585b33b8452cfd",
+        "sha256": "f41db92acc585fe9ffe0cc124d6ecaea27cef9ded91129ebc2a8e60226947b2c",
+        "sha512": "dafc60be4980ec40f40edc0f2625cb0976f3c9ce5ed86383146a120480826bb1de70ef5e38b7f1437294ed4d38c6ef3c82ebef0ae4e00b8cee165788c9c18280"
+      },
+      "metadata": {
+        "projectId": "ZvMtQlho",
+        "versionId": "kC2Y8q1P",
+        "version": "2.1.2",
+        "dependencies": []
+      },
+      "path": "shaderpacks/Bliss_v2.1.2_(Chocapic13_Shaders_edit).zip"
+    },
+    {
+      "id": "complementary-reimagined",
+      "loaders": [
+        "fabric",
+        "neoforge"
+      ],
+      "env": {
+        "client": "required",
+        "server": "unsupported"
+      },
+      "source": {
+        "type": "modrinth",
+        "version": "Bqen1mJX"
+      },
+      "downloads": [
+        "https://cdn.modrinth.com/data/HVnmMxH1/versions/Bqen1mJX/ComplementaryReimagined_r5.9.3.zip"
+      ],
+      "fileSize": 553397,
+      "hashes": {
+        "sha1": "838139b54cddb56b2e83cd260d8efd960ac536d6",
+        "sha256": "fed6c879e732cf7fc7bc6570ebb1def43235aa7e96f62859fbdbdbfa0b484b38",
+        "sha512": "45304b1d7862afdb2177b7e6226fc9c6737911d17a4ad46cc9c519ca4deb935f05072cd337cd8b19a15bb8062b57b54eceec7bdee4cd572d94858e2946d37d85"
+      },
+      "metadata": {
+        "projectId": "HVnmMxH1",
+        "versionId": "Bqen1mJX",
+        "version": "r5.9.3",
+        "dependencies": []
+      },
+      "path": "shaderpacks/ComplementaryReimagined_r5.9.3.zip"
+    }
+  ]
+}

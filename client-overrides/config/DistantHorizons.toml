@@ -1,0 +1,23 @@
+_version = 5
+
+[common.multiThreading]
+numberOfThreads = 4
+threadRunTimeRatio = "0.75"
+
+[common.worldGenerator]
+enableDistantGeneration = true
+generatorPlan = "SURFACE_ONLY"
+
+[common.lodBuilding.experimental]
+keepLowerDetailLodsUntilChildrenHaveData = true
+upsampleLowerDetailLodsToFillHoles = false
+
+[client.advanced.autoUpdater]
+enableAutoUpdater = false
+enableSilentUpdates = false
+
+[client.advanced.graphics.quality]
+lodChunkRenderDistanceRadius = 512
+horizontalQuality = "MEDIUM"
+verticalQuality = "MEDIUM"
+lodBiomeBlending = 0

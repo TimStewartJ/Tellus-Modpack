@@ -1,0 +1,40 @@
+TELLUS EXPLORER 0.1.0-alpha.1
+Minecraft 26.3 | Java 25 | Fresh test worlds only
+
+This is a Tellus exploration and creative-building pack, not Tellus Expeditions.
+It does not include Expeditions gameplay, journal, starter kit or Earth defaults.
+
+FIRST WORLD
+1. Create a NEW world. Select the Earth world type; this pack does not select it
+   automatically. Customize it before creating the world.
+2. Tellus' shipped default is a 1:30 world at Everest. For a gentler start, move
+   the spawn to a familiar low-altitude location in Customize / Set Spawnpoint.
+3. For real-height 1:1 exploration, choose those settings in Customize. They are
+   more demanding than the shipped 1:30 default.
+4. Use Creative mode if you want to fly and print Mighty Architectury builds.
+   Press G to open its composer. Printing needs Creative/operator permissions.
+5. Tellus needs an internet connection to fetch geographic source data. New
+   terrain and distant views can take time to settle.
+
+SHADERS
+Iris, Bliss 2.1.2 and Complementary Reimagined r5.9.3 are installed.
+Shaders start OFF. Enable one in Options / Video Settings / Shader Packs.
+Keep the ZIPs intact. Use the shader's own lower-quality profile if necessary.
+If you see shader-pass errors or missing distant terrain, turn shaders off first.
+
+BASELINE SETTINGS
+Vanilla render/simulation distances: 6 chunks each.
+Distant Horizons radius: 512 chunks; medium horizontal/vertical quality.
+DH workers: 4, with a 0.75 runtime ratio. These are conservative starting values,
+not a measured performance guarantee or a fix for terrain-streaming stalls.
+Use the launcher's Java 25 selection and memory settings. Start with 6 GiB heap
+on a machine with enough free RAM; do not allocate all your physical memory.
+
+ALPHA LIMITS
+Downloads and package contents are checked; this assembled pack still needs a
+fresh-world game test on each loader. Shader/DH/building interactions are not
+claimed validated. Public publishing is on hold.
+Do not update the Tellus/DH forks independently through a launcher's update-all
+button. Use a newly tested pack version instead.
+
+Never import this alpha over a valued instance or an existing world.

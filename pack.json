@@ -1,0 +1,123 @@
+{
+  "name": "Tellus Explorer",
+  "version": "0.1.0-alpha.1",
+  "summary": "Earth terrain, distant views, creative building and optional shaders. No Tellus Expeditions.",
+  "minecraft": "26.3",
+  "loaders": {
+    "fabric": {"id": "fabric-loader", "version": "0.19.5"},
+    "neoforge": {"id": "neoforge", "version": "26.3.0.76"}
+  },
+  "files": [
+    {
+      "id": "tellus-fabric",
+      "loaders": ["fabric"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "required"},
+      "source": {
+        "type": "github",
+        "repository": "TimStewartJ/Tellus",
+        "tag": "v0.8.4-fork.15",
+        "asset": "Tellus-fabric-26.3-0.8.4-fork.15.jar"
+      }
+    },
+    {
+      "id": "tellus-neoforge",
+      "loaders": ["neoforge"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "required"},
+      "source": {
+        "type": "github",
+        "repository": "TimStewartJ/Tellus",
+        "tag": "v0.8.4-fork.15",
+        "asset": "Tellus-neoforge-26.3-0.8.4-fork.15.jar"
+      }
+    },
+    {
+      "id": "distant-horizons-fabric",
+      "loaders": ["fabric"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "unsupported"},
+      "source": {
+        "type": "github",
+        "repository": "TimStewartJ/distant-horizons",
+        "tag": "3.3.4-tellus-fork.7",
+        "asset": "DistantHorizons-fabric-3.3.4-tellus-fork.7-26.3.jar"
+      }
+    },
+    {
+      "id": "distant-horizons-neoforge",
+      "loaders": ["neoforge"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "unsupported"},
+      "source": {
+        "type": "github",
+        "repository": "TimStewartJ/distant-horizons",
+        "tag": "3.3.4-tellus-fork.7",
+        "asset": "DistantHorizons-neoforge-3.3.4-tellus-fork.7-26.3.jar"
+      }
+    },
+    {
+      "id": "fabric-api",
+      "loaders": ["fabric"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "required"},
+      "source": {"type": "modrinth", "version": "hHj6EvFZ"}
+    },
+    {
+      "id": "sodium-fabric",
+      "loaders": ["fabric"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "unsupported"},
+      "source": {"type": "modrinth", "version": "bAZQdGpg"}
+    },
+    {
+      "id": "sodium-neoforge",
+      "loaders": ["neoforge"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "unsupported"},
+      "source": {"type": "modrinth", "version": "VHtnT9Q4"}
+    },
+    {
+      "id": "iris-fabric",
+      "loaders": ["fabric"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "unsupported"},
+      "source": {"type": "modrinth", "version": "bAdKrpw8"}
+    },
+    {
+      "id": "iris-neoforge",
+      "loaders": ["neoforge"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "unsupported"},
+      "source": {"type": "modrinth", "version": "Ag5S66CF"}
+    },
+    {
+      "id": "mighty-architectury-fabric",
+      "loaders": ["fabric"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "optional"},
+      "source": {"type": "modrinth", "version": "rjEVSfVK"}
+    },
+    {
+      "id": "mighty-architectury-neoforge",
+      "loaders": ["neoforge"],
+      "directory": "mods",
+      "env": {"client": "required", "server": "optional"},
+      "source": {"type": "modrinth", "version": "MtPYT3ho"}
+    },
+    {
+      "id": "bliss",
+      "loaders": ["fabric", "neoforge"],
+      "directory": "shaderpacks",
+      "env": {"client": "required", "server": "unsupported"},
+      "source": {"type": "modrinth", "version": "kC2Y8q1P"}
+    },
+    {
+      "id": "complementary-reimagined",
+      "loaders": ["fabric", "neoforge"],
+      "directory": "shaderpacks",
+      "env": {"client": "required", "server": "unsupported"},
+      "source": {"type": "modrinth", "version": "Bqen1mJX"}
+    }
+  ]
+}
